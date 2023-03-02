@@ -19,6 +19,11 @@ buttonAnalyzeEl.addEventListener("click", function() {
 
 // -------------------------------FUNCTIONS-------------------------------------
 
+/**
+ * Restituisce true se la parola inserita è palindroma, falso altrimenti.
+ * @param {string} word
+ * @returns {boolean}
+ */
 function isPalindrome(word) {
     let reverseWord = "";
     for(let i = 0; i < word.length; i++) {
