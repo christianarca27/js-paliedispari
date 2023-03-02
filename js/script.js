@@ -8,11 +8,18 @@ buttonAnalyzeEl.addEventListener("click", function() {
     const wordInput = wordInputEl.value;
     const result1El = document.getElementById("result-1");
 
-    if(isPalindrome(wordInput)) {
-        result1El.innerText = "La parola " + wordInput + " è palindroma.";
+    if(wordInput != "") {
+        result1El.style.color = "black";
+        if(isPalindrome(wordInput)) {
+            result1El.innerText = "La parola " + wordInput + " è palindroma.";
+        }
+        else {
+            result1El.innerText = "La parola " + wordInput + " NON è palindroma.";
+        }
     }
     else {
-        result1El.innerText = "La parola " + wordInput + " NON è palindroma.";
+        result1El.style.color = "red";
+        result1El.innerText = "Inserisci una parola nel campo di testo.";
     }
 });
 
@@ -25,18 +32,25 @@ buttonPlayEl.addEventListener("click", function() {
     let userNumber = parseInt(document.getElementById("number-input").value);
     console.log(userNumber);
 
-    let pcNumber = parseInt(generateRandomNumber(1, 5));
-    console.log(pcNumber);
-    
-    result2El.innerHTML = "Hai giocato: " + userNumber + "<br>" + "Il pc ha giocato: " + pcNumber + "<br>";
+    if(userNumber >= 1 && userNumber <= 5) {
+        let pcNumber = parseInt(generateRandomNumber(1, 5));
+        console.log(pcNumber);
+        
+        result2El.style.color = "black";
+        result2El.innerHTML = "Hai giocato: " + userNumber + "<br>" + "Il pc ha giocato: " + pcNumber + "<br>";
 
-    if(isEvenOrOdd(userNumber + pcNumber) == userChoice) {
-        console.log("Hai vinto !");
-        result2El.innerHTML += "Hai vinto !";
+        if(isEvenOrOdd(userNumber + pcNumber) == userChoice) {
+            console.log("Hai vinto !");
+            result2El.innerHTML += "Hai vinto !";
+        }
+        else {
+            console.log("Hai perso..");
+            result2El.innerHTML += "Hai perso..";
+        }
     }
     else {
-        console.log("Hai perso..");
-        result2El.innerHTML += "Hai perso..";
+        result2El.style.color = "red";
+        result2El.innerHTML = "Inserisci un numero compreso tra 1 e 5.";
     }
 });
 
